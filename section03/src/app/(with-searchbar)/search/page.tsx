@@ -1,8 +1,16 @@
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: Promise<{ q: string }>;
+import ClientComponent from "@/components/client-component";
+
+export default async function Page(props: {
+  searchParams: Promise<{ q?: string }>;
 }) {
-  const { q } = await searchParams;
-  return <div>Search 페이지 : {q} </div>;
+  const searchParams = await props.searchParams;
+
+  return (
+    <div>
+      Search 페이지 : {searchParams.q}
+      <ClientComponent>
+        <></>
+      </ClientComponent>
+    </div>
+  );
 }
